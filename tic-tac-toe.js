@@ -36,7 +36,7 @@ function addHoverListeners() {
 
 
 function addClickListeners() {
-    var p = 0;
+    var p = false;
     for (let i = 0, len = divs.length; i < len; i++) {
         (function(index) {
             divs[i].onclick = function() {
@@ -44,7 +44,7 @@ function addClickListeners() {
                 var width = 3;
                 console.log(~~(index / gridSize), index % gridSize)
                 play(p, ~~(index / gridSize), index % gridSize)
-                p = +!p
+                p = !p
             }
         })(i);
     }
@@ -79,7 +79,7 @@ function play(p, row, col) {
     }
 
     --noOfPlays;
-    if (p === 1) {
+    if (p === true) {
         divs[index].appendChild(document.createTextNode("O"));
         divs[index].className = "square sqaure O";
         playedcells[index] = 1;
