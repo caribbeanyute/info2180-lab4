@@ -21,7 +21,8 @@ function addHoverListeners() {
                 if (divs[i].textContent === "O") {
                     divs[i].classList.add('hover');
                     divs[i].classList.add('hover O');
-                } else {
+                } 
+                else {
                     divs[i].classList.add('hover');
                 }
             });
@@ -40,9 +41,7 @@ function addClickListeners() {
     for (let i = 0, len = divs.length; i < len; i++) {
         (function(index) {
             divs[i].onclick = function() {
-                //(index)  ;
                 var width = 3;
-                console.log(~~(index / gridSize), index % gridSize)
                 play(p, ~~(index / gridSize), index % gridSize)
                 p = !p
             }
@@ -90,7 +89,7 @@ function play(p, row, col) {
         playedcells[index] = 1
         point = -1;
     }
-    console.log('cle', playedcells);
+    //console.log('cle', playedcells);
     gamearr[row] += point; // where point is either +1 or -1
     gamearr[gridSize + col] += point;
     if (row == col) gamearr[2 * gridSize] += point;
@@ -107,14 +106,12 @@ function play(p, row, col) {
 // Document
 document.addEventListener('DOMContentLoaded', function() {
     // alert("event listener DOMContentLoaded");
-    //document.getElementById("game").getElementById("board")[0].className = 'board';
     divs = document.querySelector("#game > #board").getElementsByTagName("div");
     document.getElementsByClassName('btn')[0].onclick = function() {
         location.reload();
     }
     for (i = 0; i < divs.length; i++) {
         divs[i].className = "square";
-
     }
     addClickListeners();
     addHoverListeners();
