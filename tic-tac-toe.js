@@ -1,14 +1,14 @@
 var gridSize = 3;
+var noOfPlays = gridSize * gridSize;
 var divs = [];
 var gamearr = Array(2 * gridSize + 2).fill(0);
-var playedcells = Array(9).fill(0);
-var noOfPlays = gridSize * gridSize;
+var playedcells = Array(noOfPlays).fill(0);
 var playedcells = Array(noOfPlays).fill(0);
 
 function reset() {
     divs = [];
     gamearr = Array(2 * gridSize + 2).fill(0);
-    playedcells = Array(9).fill(0);
+    playedcells = Array(noOfPlays).fill(0);
     noOfPlays = gridSize * gridSize;
     playedcells = Array(noOfPlays).fill(0);
 }
@@ -41,7 +41,6 @@ function addClickListeners() {
     for (let i = 0, len = divs.length; i < len; i++) {
         (function(index) {
             divs[i].onclick = function() {
-                var width = 3;
                 play(p, ~~(index / gridSize), index % gridSize)
                 p = !p
             }
@@ -69,7 +68,7 @@ function declareWinner(winner) {
 //var row = ~~(index/width);
 //var column = index%width
 function play(p, row, col) {
-    var index = (row * 3) + col;
+    var index = (row * gridSize) + col;
 
     var point = 0;
     if (playedcells[index] === 1) {
